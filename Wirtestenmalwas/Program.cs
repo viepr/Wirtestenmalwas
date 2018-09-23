@@ -16,6 +16,8 @@ namespace Wirtestenmalwas
                     Ausgabe(z, y);
                    y = Eingabe(y);
                             }
+            MeineKlasse instanzMeine = new MeineKlasse();
+            instanzMeine.MeineMethode();
             Console.ReadKey();
             
         }
@@ -29,13 +31,16 @@ namespace Wirtestenmalwas
 
         static void Ausgabe(string x, int y)
         {
-
-
             Console.WriteLine( x + y);
-            
-            
+           
             
         }
     }
-
+    public class MeineKlasse
+    {
+        public void MeineMethode()
+        {
+            Console.WriteLine("Ausgabe aus der Klasse");
+        }
+    }
 }
