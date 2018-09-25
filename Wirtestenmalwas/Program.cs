@@ -2,22 +2,28 @@
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Configuration;
 
 namespace Wirtestenmalwas
 {
     class Program
     {
         static void Main(string[] args)
-    
         {
+      
             int y = 1;
-            string z = "Hallo Ihr";
-            while(y < 10)  {
+
+            string z = "Hallo Ihr", variable1, variable2;
+            variable1 = System.Configuration.ConfigurationManager.AppSettings["var1"];
+            variable2 = System.Configuration.ConfigurationManager.AppSettings["var2"];
+            while (y < 10)  {
                     Ausgabe(z, y);
                    y = Eingabe(y);
                             }
             MeineKlasse instanzMeine = new MeineKlasse();
             instanzMeine.MeineMethode();
+            MeinQuad meinneuesquad = new MeinQuad();
+            meinneuesquad.AQD(variable1 ,variable2 );
             Console.ReadKey();
             
         }
@@ -41,6 +47,15 @@ namespace Wirtestenmalwas
         public void MeineMethode()
         {
             Console.WriteLine("Ausgabe aus der Klasse");
+        }
+    }
+    public class MeinQuad
+    {
+        public void AQD(string x, string y)
+        {
+            Console.WriteLine(x + y);
+
+
         }
     }
 }
