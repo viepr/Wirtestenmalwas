@@ -68,19 +68,40 @@ namespace Wirtestenmalwas
         {
 
             StreamReader reader = new StreamReader("f:\\file.txt");
-            string line = reader.ReadLine();
-            // UTF8Encoding(line);
-            Console.WriteLine(line);
+            while (!reader.EndOfStream ) {
+                string line = reader.ReadLine();
+                //UTF8Encoding(line);
+                Console.WriteLine(line);
+            }
 
         }
 
-        private void UTF8Encoding(string v)
+        private void UTF8Encoding(string someText)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
             //foreach ( ) {
             //byte[] utf = Encoding.UTF8.GetBytes(v);
 
             //Console.WriteLine(utf);
+
+            // create a string to convert to a byte array...
+            //String someText = "some ascii text to convert";
+            Console.WriteLine(someText);
+
+            // encode the string as an ASCII byte array
+            byte[] myASCIIBytes = Encoding.ASCII.GetBytes(someText);
+            Console.WriteLine(BitConverter.ToString(myASCIIBytes));
+
+            // convert the ASCII byte array to a UTF-8 byte array
+            byte[] myUTF8Bytes = ASCIIEncoding.Convert(Encoding.ASCII,Encoding.UTF8, myASCIIBytes);
+            Console.WriteLine(BitConverter.ToString(myUTF8Bytes));
+
+            // reconstitute a string from the UTF-8 byte array 
+            String deserialisedText = Encoding.UTF8.GetString(myUTF8Bytes);
+            Console.WriteLine(deserialisedText);
+
+            //... only convert ASCII characters in the
+            // range 0x00 - 0x7F to avoid loss of value. 
         }
     }
 }
